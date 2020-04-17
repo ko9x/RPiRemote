@@ -11,4 +11,8 @@ export class HomePage {
 
   }
 
+  runScript() {
+    // figure out how to run the script
+  }
+
 }
