@@ -10,9 +10,14 @@
 
 <ion-content padding>
   <h3>Ionic Menu Starter</h3>
-
-  <button (click)="pinOn24()" ion-button>pin on</button>
-  <button (click)="pinOff24()" ion-button>pin off</button>
+  {{connectionReady}}
+  <button (click)="checkConnection()" ion-button>Check connection</button>
+  <button (click)="pinOn7()" ion-button>7 on</button>
+  <button (click)="pinOff7()" ion-button>7 off</button>
+  <button (click)="fanLow()" ion-button>Fan Low</button>
+  <button (click)="fanMedium()" ion-button>Fan Medium</button>
+  <button (click)="fanHigh()" ion-button>Fan High</button>
+  <button (click)="allFanPinsOff()" ion-button>Fan Off</button>
 
   <button ion-button secondary menuToggle>Toggle Menu</button>
   
