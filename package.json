@@ -26,6 +26,7 @@
     "@types/jquery": "^3.3.35",
     "@types/xterm": "^3.0.0",
     "ajv": "^6.12.0",
+    "cordova-android": "8.1.0",
     "cordova-ios": "5.1.1",
     "cors": "^2.8.5",
     "ionic-angular": "3.9.9",
@@ -58,7 +59,8 @@
       "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }
