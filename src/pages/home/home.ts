@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 
@@ -18,12 +18,10 @@ export class HomePage {
   public pin15 = "off";
   public pin13 = "off";
   public pin11 = "off";
-  public loader;
 
     constructor(
       public navCtrl: NavController, 
-      public http: HttpClient, 
-      public loadingCtrl: LoadingController
+      public http: HttpClient
     ) {
       this.checkConnection();
     }
@@ -33,16 +31,9 @@ export class HomePage {
     // connection status
 
     checkConnection() {
-      this.loader = this.loadingCtrl.create({
-        spinner: 'bubbles',
-        content: 'Connecting...'
-    });
-
-    this.loader.present();
       this.http.get("http://192.168.0.31/rpiapi")
       .subscribe(response => {
         if(response) {
-          this.loader.dismiss();
           this.connectionReady = true;
           this.checkStates();
         } 
@@ -211,6 +202,7 @@ export class HomePage {
       this.http.get("http://192.168.0.31/rpiapi/deactivate/11")
       .subscribe(response => {
         if(response === 0) {
+          console.log('response pin 11 fan off', response)
           this.checkStates();
         }
       })
