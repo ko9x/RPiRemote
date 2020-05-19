@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 
@@ -12,14 +12,19 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 export class HomePage {
 
-  private connectionReady = false;
-  private lightState = "off";
-  private fanState = "off";
-  private pin15 = "off";
-  private pin13 = "off";
-  private pin11 = "off";
+  public connectionReady = false;
+  public lightState = "off";
+  public fanState = "off";
+  public pin15 = "off";
+  public pin13 = "off";
+  public pin11 = "off";
+  public loader;
 
-    constructor(public navCtrl: NavController, public http: HttpClient) {
+    constructor(
+      public navCtrl: NavController, 
+      public http: HttpClient, 
+      public loadingCtrl: LoadingController
+    ) {
       this.checkConnection();
     }
 
@@ -28,9 +33,16 @@ export class HomePage {
     // connection status
 
     checkConnection() {
+      this.loader = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: 'Connecting...'
+    });
+
+    this.loader.present();
       this.http.get("http://192.168.0.31/rpiapi")
       .subscribe(response => {
         if(response) {
+          this.loader.dismiss();
           this.connectionReady = true;
           this.checkStates();
         } 
