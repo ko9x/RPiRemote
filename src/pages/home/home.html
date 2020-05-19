@@ -9,6 +9,72 @@
 
 
 <ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div *ngIf="connectionReady">
+          <button (click)="checkConnection()" ion-button block large color="secondary">Connected</button>
+        </div>
+        <div *ngIf="!connectionReady">
+          <button (click)="checkConnection()" ion-button block large color="danger">Check Connection</button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div *ngIf="lightState=='on'">
+          <button color="secondary" (click)="pinOn7()" ion-button large block >Light On</button>
+        </div>
+        <div *ngIf="lightState!='on'">
+          <button (click)="pinOn7()" ion-button block large >Light On</button>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div *ngIf="lightState=='off'">
+          <button (click)="pinOff7()" ion-button block large color="secondary">Light Off</button>
+        </div>
+        <div *ngIf="lightState!='off'">
+          <button (click)="pinOff7()" ion-button block large >Light Off</button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div *ngIf="fanState=='high'">
+          <button color="tertiary" (click)="fanHigh()" ion-button block large color="secondary">Fan High</button>
+        </div>
+        <div *ngIf="fanState!='high'">
+          <button color="tertiary" (click)="fanHigh()" ion-button block large >Fan High</button>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div *ngIf="fanState=='medium'">
+          <button (click)="fanMedium()" ion-button block large color="secondary" >Fan Medium</button>
+        </div>
+        <div *ngIf="fanState!='medium'">
+          <button (click)="fanMedium()" ion-button block large >Fan Medium</button>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div *ngIf="fanState=='low'">
+          <button (click)="fanLow()" ion-button block large color="secondary">Fan Low</button>
+        </div>
+        <div *ngIf="fanState!='low'">
+          <button (click)="fanLow()" ion-button block large>Fan Low</button>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div *ngIf="fanState=='off'">
+          <button (click)="allFanPinsOff()" ion-button block large color="secondary">Fan Off</button>
+        </div>
+        <div *ngIf="fanState!='off'">
+          <button (click)="allFanPinsOff()" ion-button block large >Fan Off</button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <h3>Ionic Menu Starter</h3>
   {{connectionReady}}
   {{lightState}}
